@@ -1,0 +1,21 @@
+#p-form-1{
+    float: left;
+    width: 400px;
+}
+
+#p-form-2 {
+    float: right;
+}
+#p-form-2 label{
+    vertical-align: top;
+}
+#p-form-2 select{
+    height: 500px;
+}
+#p-form-3{
+    width: 400px;
+}
+
+#orgs_select{
+    display: none;
+}
