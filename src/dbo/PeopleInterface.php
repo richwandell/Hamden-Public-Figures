@@ -1,7 +1,8 @@
 <?php
 namespace csc545\dbo;
 
-interface PeopleInterface{
+interface PeopleInterface
+{
     /**
      * @param Person $p
      * @return mixed

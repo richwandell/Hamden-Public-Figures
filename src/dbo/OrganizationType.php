@@ -3,7 +3,8 @@
 namespace csc545\dbo;
 
 
-class OrganizationType{
+class OrganizationType
+{
 
     /**
      * @var Int

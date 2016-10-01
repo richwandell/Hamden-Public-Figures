@@ -4,7 +4,8 @@ namespace csc545\dbo;
 
 use DateTime;
 
-class Event{
+class Event
+{
     /**
      * @var DateTime
      */

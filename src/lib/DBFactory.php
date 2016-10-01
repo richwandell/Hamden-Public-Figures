@@ -7,12 +7,14 @@ use csc545\dbo\MySQLPeopleDatabase;
 use csc545\dbo\MongoPeopleDatabase;
 use csc545\dbo\MongoOrganizationDatabase;
 
-class DBFactory{
+class DBFactory
+{
 
     /**
      * @return MongoPeopleDatabase|MySQLPeopleDatabase
      */
-    public static function getPeopleDatabase(){
+    public static function getPeopleDatabase()
+    {
         if(MODE == "MYSQL"){
             return new MySQLPeopleDatabase();
         }else{
@@ -23,7 +25,8 @@ class DBFactory{
     /**
      * @return MongoOrganizationDatabase|MySQLOrganizationDatabase
      */
-    public static function getOrganizationDatabase(){
+    public static function getOrganizationDatabase()
+    {
         if(MODE == "MYSQL"){
             return new MySQLOrganizationDatabase();
         }else{

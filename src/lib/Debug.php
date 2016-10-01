@@ -2,7 +2,8 @@
 
 namespace csc545\lib;
 
-class Debug{
+class Debug
+{
 
     private static $debug = array();
 

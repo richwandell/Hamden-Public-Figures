@@ -2,7 +2,8 @@
 
 namespace csc545\lib;
 
-class Router{
+class Router
+{
     /**
      * @var string controller name that is used
      */
@@ -54,7 +55,8 @@ class Router{
         }
     }
 
-    public function route(){
+    public function route()
+    {
         $controller_name = 'csc545\\controllers\\' . ucfirst($this->controller) . "Controller";
         if(class_exists($controller_name)) {
             $conn = new $controller_name();

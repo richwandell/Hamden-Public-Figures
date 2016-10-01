@@ -13,7 +13,8 @@ use csc545\lib\GeneralError;
 use csc545\lib\RedirectException;
 use DateTime;
 
-class PeopleController extends Controller{
+class PeopleController extends Controller
+{
     /**
      * @var array The css files to include
      */

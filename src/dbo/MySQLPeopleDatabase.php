@@ -7,7 +7,8 @@ use csc545\lib\MySQLObjectIterator;
 use DateTime;
 use PDO;
 
-class MySQLPeopleDatabase extends PDO implements PeopleInterface{
+class MySQLPeopleDatabase extends PDO implements PeopleInterface
+{
 
     public function __construct()
     {

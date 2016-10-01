@@ -9,7 +9,8 @@ use csc545\lib\DBFactory;
 use csc545\lib\Debug;
 
 
-class OverviewController extends Controller{
+class OverviewController extends Controller
+{
     /**
      * @var array The css files to include
      */

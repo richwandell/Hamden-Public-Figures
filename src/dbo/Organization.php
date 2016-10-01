@@ -4,7 +4,8 @@ namespace csc545\dbo;
 
 use DateTime;
 
-class Organization{
+class Organization
+{
     /**
      * ID's are different in mongo and mysql
      * @var Mixed

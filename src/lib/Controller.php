@@ -9,7 +9,8 @@ namespace csc545\lib;
  *
  * @package csc545\lib
  */
-class Controller{
+class Controller
+{
 
     public function __construct()
     {

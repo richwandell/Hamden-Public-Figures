@@ -4,7 +4,8 @@ namespace csc545\dbo;
 
 use Iterator;
 
-interface OrganizationInterface{
+interface OrganizationInterface
+{
     /**
      * @return Iterator
      */

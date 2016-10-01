@@ -5,7 +5,8 @@ namespace csc545\dbo;
 use csc545\lib\DBFactory;
 use DateTime;
 
-class Person{
+class Person
+{
     /**
      * @var Mixed
      */
