@@ -7,8 +7,8 @@ define("APPSTARTUPTIME", microtime(true));
 
 define("BOOTSTRAP", "loaded");
 
-//define("MODE", "MYSQL");
-define("MODE", "MONGO");
+define("MODE", "MYSQL");
+//define("MODE", "MONGO");
 
 define("MYSQLDSN", "mysql:host=localhost;dbname=politics");
 define("MYSQLUSER", "root");

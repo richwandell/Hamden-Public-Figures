@@ -49,7 +49,7 @@ if(!defined("BOOTSTRAP")) die("no bs"); ?>
                 <div class="panel-body">
                     <ul class="list-group">
                         <?php foreach($organizations as $org): ?>
-                        <li class="list-group-item <?php if($selected_org->org_id == $org->org_id):
+                        <li class="list-group-item <?php if($selected_org->compareTo($org)):
                             $_selected_org_name = $org->organization_name; ?>list-group-item-info<?php endif;?>">
                             <span class="badge"><?php echo $org->person_count; ?></span>
                             <a href="/overview?org=<?php echo $org->org_id ."&type=" . $selected_type->type_id; ?>">

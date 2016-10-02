@@ -62,4 +62,19 @@ class Organization
      * @var String
      */
     public $organization_job_title;
+
+    /**
+     * Compares organization objects
+     * @param Organization $cmp
+     * @return bool
+     */
+    public function compareTo(Organization $cmp)
+    {
+        $thi = (string)$this->org_id;
+        $tha = (string)$cmp->org_id;
+        if($thi == $tha){
+            return true;
+        }
+        return false;
+    }
 }

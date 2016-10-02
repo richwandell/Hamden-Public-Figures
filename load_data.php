@@ -14,7 +14,7 @@ include_once "bootstrap.php";
 $out = shell_exec('mysql -u ' . MYSQLUSER . ' -p'. MYSQLPASS .' < mysql_database.sql');
 
 $database = new MySQLOrganizationDatabase();
-$people_to_create = 1000000;
+$people_to_create = 10000;
 $stm = $database->prepare("insert into person (last_name, first_name, full_name) values (?, ?, ?)");
 $stm1 = $database->prepare("insert into person_organization 
 (organization_id, person_id, start_date, end_date, job_title_id) values (?, ?, ?, ?, ?)");
