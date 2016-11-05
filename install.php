@@ -18,7 +18,7 @@ $people_to_create = 10000;
 $stm = $database->prepare("insert into person (last_name, first_name, full_name) values (?, ?, ?)");
 $stm1 = $database->prepare("insert into person_organization 
 (organization_id, person_id, start_date, end_date, job_title_id) values (?, ?, ?, ?, ?)");
-echo "Starting MySQL million records" . PHP_EOL;
+echo "Starting MySQL inserts " . PHP_EOL;
 $start = microtime(true);
 for($x = 0; $x < $people_to_create; $x++){
     $stm->execute(array(
@@ -37,7 +37,7 @@ for($x = 0; $x < $people_to_create; $x++){
     ));
 }
 $end = microtime(true);
-echo "Finished loading million records " . ($end - $start);
+echo "Finished loading records " . ($end - $start);
 
 echo "Starting Mongo load" .PHP_EOL;
 

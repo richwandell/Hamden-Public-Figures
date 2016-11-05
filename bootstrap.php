@@ -56,3 +56,4 @@ spl_autoload_register(function ($class) {
     }
 });
 
+include_once "vendor/autoload.php";
