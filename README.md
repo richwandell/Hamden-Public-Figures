@@ -1,3 +1,5 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/richwandell/Hamden-Public-Figures/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/richwandell/Hamden-Public-Figures/?branch=master)
+
 # Hamden Politics - Influence Intelligence
 ### csc545 Summer 2016
 Hamden Politics - *Influence Intelligence* uses a framework built for abstracting the data access layer in order to quickly switch between database back ends. A factory pattern is used to fetch a generic database object which interacts with the database layer via [Data Access Objects]. Methods that are used throughout the applications are declared in the database interface and implemented in the corresponding database abstraction class. 
