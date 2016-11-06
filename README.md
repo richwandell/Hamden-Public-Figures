@@ -1,4 +1,6 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/richwandell/Hamden-Public-Figures/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/richwandell/Hamden-Public-Figures/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/richwandell/Hamden-Public-Figures/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/richwandell/Hamden-Public-Figures/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/richwandell/Hamden-Public-Figures/badges/build.png?b=master)](https://scrutinizer-ci.com/g/richwandell/Hamden-Public-Figures/build-status/master)
 
 # Hamden Politics - Influence Intelligence
 ### csc545 Summer 2016
