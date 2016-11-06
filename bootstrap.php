@@ -11,7 +11,7 @@ define("BOOTSTRAP", "loaded");
 
 define("MYSQLDSN", "mysql:host=localhost;dbname=politics");
 define("MYSQLUSER", "root");
-define("MYSQLPASS", "root");
+define("MYSQLPASS", "");
 
 define("MONGOSERVER", "mongodb://localhost");
 define("MONGODBNAME", "scotchbox");
@@ -20,7 +20,6 @@ define("SESSIONNAME", "csc545");
 
 define("APPNAME", "Hamden Politics");
 define("APPSUBNAME", "Influence Intelligence");
-
 
 session_name(SESSIONNAME);
 session_start();
