@@ -3,6 +3,7 @@
 namespace csc545\lib;
 
 use Iterator;
+use IteratorIterator;
 use MongoCursor;
 
 class MongoObjectIterator implements Iterator
@@ -29,7 +30,8 @@ class MongoObjectIterator implements Iterator
 
     public function __construct($cursor, $object_type)
     {
-        $this->cursor = $cursor;
+        $this->cursor = new IteratorIterator($cursor);
+        $this->cursor->rewind();
         $this->object_type = $object_type;
     }
 

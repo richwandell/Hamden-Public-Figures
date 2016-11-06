@@ -107,9 +107,8 @@ class Flash
 
     public static function flashFormState()
     {
-        $f = $_SESSION["form.state"];
-        unset($_SESSION["form.state"]);
-        return $f;
+        Flash::loadFormState();
+        return Flash::$form_state;
     }
 
     public static function addErrorMessage($m)

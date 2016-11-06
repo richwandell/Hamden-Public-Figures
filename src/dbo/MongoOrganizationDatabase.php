@@ -6,8 +6,8 @@ use csc545\lib\Debug;
 use csc545\lib\MongoObjectIterator;
 use DateTime;
 use Iterator;
-use MongoClient;
-use MongoDate;
+use MongoDB\Client as MongoClient;
+use MongoDB\BSON\UTCDateTime as MongoDate;
 use MongoException;
 use MongoId;
 use MongoRegex;
@@ -26,7 +26,7 @@ class MongoOrganizationDatabase extends MongoClient implements OrganizationInter
     public function getJobTitles()
     {
         $coll = $this->selectCollection(MONGODBNAME, "job_titles");
-        $objs = $coll->aggregateCursor(array(array(
+        $objs = $coll->aggregate(array(array(
             '$project' => array(
                 "job_title_id" => '$job_title_text',
                 "job_title_text" => '$job_title_text'
@@ -36,7 +36,7 @@ class MongoOrganizationDatabase extends MongoClient implements OrganizationInter
     }
 
     /**
-     * @return Iterator
+     * @return Iterator|array
      */
     public function getAllTypes()
     {
@@ -55,7 +55,7 @@ class MongoOrganizationDatabase extends MongoClient implements OrganizationInter
 
     /**
      * @param Organization $o
-     * @return Iterator
+     * @return Iterator|array
      */
     public function getPeople(Organization $o)
     {
@@ -111,7 +111,7 @@ class MongoOrganizationDatabase extends MongoClient implements OrganizationInter
                 "person_count" => array('$size' => '$people')
             )
         );
-        $objs = $coll->aggregateCursor($query);
+        $objs = $coll->aggregate($query);
         return new MongoObjectIterator($objs, "Organization");
     }
 
@@ -121,7 +121,7 @@ class MongoOrganizationDatabase extends MongoClient implements OrganizationInter
     public function getAllNamesAndIds()
     {
         $coll = $this->selectCollection(MONGODBNAME, "organizations");
-        $objs = $coll->aggregateCursor(array(
+        $objs = $coll->aggregate(array(
             array('$project' => array(
                 "org_id" => '$_id',
                 "organization_name" => '$organization_name'
@@ -170,7 +170,7 @@ class MongoOrganizationDatabase extends MongoClient implements OrganizationInter
     public function removePerson(Person $p, Organization $o)
     {
         $coll = $this->selectCollection(MONGODBNAME, "organizations");
-        $coll->update(
+        $coll->updateMany(
             array('_id' => new MongoId($o->org_id)),
             array('$pull' => array('people' => array('person_id' => $p->person_id)))
         );

@@ -26,6 +26,11 @@ class Debug
         Debug::$debug[] = $things;
     }
 
+    public static function clearDebug()
+    {
+        Debug::$debug = array();
+    }
+
     public static function setRedirectMode($mode = true)
     {
         Debug::$redirect = $mode;

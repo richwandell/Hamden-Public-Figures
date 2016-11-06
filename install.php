@@ -8,6 +8,7 @@ use csc545\dbo\MongoOrganizationDatabase;
 use csc545\dbo\MySQLOrganizationDatabase;
 use csc545\dbo\Organization;
 use csc545\dbo\Person;
+use MongoDB\BSON\UTCDateTime as MongoDate;
 
 include_once "bootstrap.php";
 
@@ -83,7 +84,9 @@ $max_person_id = 0;
 while($result = $stm->fetch(PDO::FETCH_ASSOC)){
     if((int)$result["org_id"] != $corgid) {
         if($org != false) {
-            $coll->insert($org);
+            try {
+                $coll->insertOne($org);
+            }catch(Exception $e){}
         }
         $org = new Organization();
         $org->organization_name = preg_replace('/\n|\r/', "", $result["organization_name"]);
@@ -105,6 +108,7 @@ while($result = $stm->fetch(PDO::FETCH_ASSOC)){
         $person->last_name = preg_replace('/\n|\r/', "", $result["last_name"]);
         $person->full_name = preg_replace('/\n|\r/', "", $result["full_name"]);
         $person->person_id = (int)$result["person_id"];
+
         $person->start_date = new MongoDate(strtotime($result["start_date"]));
         $person->end_date = new MongoDate(strtotime($result["end_date"]));
         $person->job_title = preg_replace('/\n|\r/', '', $result["job_title"]);
@@ -116,7 +120,9 @@ while($result = $stm->fetch(PDO::FETCH_ASSOC)){
     }
     $corgid = $result["org_id"];
 }
-$coll->insert($org);
+try {
+    $coll->insertOne($org);
+}catch(Exception $e){}
 
 
 $coll->createIndex(array("people.person_id" => 1));
@@ -131,13 +137,13 @@ while($result = $stm->fetch(PDO::FETCH_ASSOC)){
     $jt = new JobTitle();
     $jt->job_title_text = preg_replace('/\n|\r/', '', $result["job_title"]);
 
-    $coll->insert($jt);
+    $coll->insertOne($jt);
 }
 
 $coll = $mongo->selectCollection(MONGODBNAME, "counts");
 $coll->drop();
 
-$coll->insert(array(
+$coll->insertOne(array(
     'person_id' => (int)$max_person_id
 ));
 

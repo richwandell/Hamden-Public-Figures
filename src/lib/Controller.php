@@ -26,6 +26,9 @@ class Controller
      */
     protected function checkCsrf($test, $method)
     {
+        if(!isset($_SESSION["csrf_" . $method])){
+            return false;
+        }
         return $test == $_SESSION["csrf_" . $method];
     }
 

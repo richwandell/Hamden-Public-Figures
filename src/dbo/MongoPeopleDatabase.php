@@ -2,13 +2,10 @@
 
 namespace csc545\dbo;
 
-use csc545\lib\Debug;
 use DateTime;
-use MongoClient;
+use MongoDB\Client as MongoClient;
 use MongoDate;
 use MongoId;
-use MongoRegex;
-use csc545\lib\MongoObjectIterator;
 
 class MongoPeopleDatabase extends MongoClient implements PeopleInterface
 {
@@ -26,7 +23,7 @@ class MongoPeopleDatabase extends MongoClient implements PeopleInterface
     public function updatePersonInfo(Person $p)
     {
         $coll = $this->selectCollection(MONGODBNAME, "organizations");
-        $coll->update(
+        $coll->updateMany(
             array(
                 "people.person_id" => $p->person_id
             ),
@@ -48,7 +45,7 @@ class MongoPeopleDatabase extends MongoClient implements PeopleInterface
             $p->job_title = $p->organizations[0]->organization_job_title_id;
             $org_id = new MongoId($p->organizations[0]->org_id);
             unset($p->organizations);
-            $coll->update(
+            $coll->updateMany(
                 array(
                     '_id' => $org_id
                 ),
