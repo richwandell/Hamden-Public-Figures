@@ -12,7 +12,7 @@ use MongoDB\BSON\UTCDateTime as MongoDate;
 
 include_once "bootstrap.php";
 
-$out = shell_exec('mysql -u ' . MYSQLUSER . ' -p'. MYSQLPASS .' < mysql_database.sql');
+$out = shell_exec('mysql -u ' . MYSQLUSER . ' < mysql_database.sql');
 
 $database = new MySQLOrganizationDatabase();
 $people_to_create = 10000;
