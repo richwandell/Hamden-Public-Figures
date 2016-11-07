@@ -6,7 +6,6 @@ use csc545\dbo\Organization;
 use csc545\lib\Controller;
 use csc545\lib\DBFactory;
 use csc545\dbo\Person;
-use csc545\lib\Debug;
 use csc545\lib\Flash;
 use csc545\lib\FormError;
 use csc545\lib\GeneralError;

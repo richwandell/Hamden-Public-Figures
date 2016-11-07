@@ -85,10 +85,10 @@ class OrganizationController extends Controller
         }
         $org = new Organization();
         $person = new Person();
-        if(isset($_POST["delete_button"])){
+        if (isset($_POST["delete_button"])) {
             $person->person_id = (int)$_POST["delete_button"];
         }
-        if(isset($_POST["organization_id"])){
+        if (isset($_POST["organization_id"])) {
             $org->org_id = $_POST["organization_id"];
         }
         $database = DBFactory::getOrganizationDatabase();
