@@ -12,7 +12,7 @@ use MongoDB\BSON\UTCDateTime as MongoDate;
 
 include_once "bootstrap.php";
 
-$out = shell_exec('mysql -u ' . MYSQLUSER . ' < mysql_database.sql');
+$out = shell_exec('mysql -u ' . MYSQLUSER . '  < mysql_database.sql');
 
 $database = new MySQLOrganizationDatabase();
 $people_to_create = 10000;
@@ -85,8 +85,11 @@ while($result = $stm->fetch(PDO::FETCH_ASSOC)){
     if((int)$result["org_id"] != $corgid) {
         if($org != false) {
             try {
+                $org = json_decode(json_encode($org), true);
                 $coll->insertOne($org);
-            }catch(Exception $e){}
+            }catch(Exception $e){
+                echo $e->getMessage() . PHP_EOL;
+            }
         }
         $org = new Organization();
         $org->organization_name = preg_replace('/\n|\r/', "", $result["organization_name"]);
@@ -121,6 +124,7 @@ while($result = $stm->fetch(PDO::FETCH_ASSOC)){
     $corgid = $result["org_id"];
 }
 try {
+    $org = json_decode(json_encode($org), true);
     $coll->insertOne($org);
 }catch(Exception $e){}
 
@@ -136,7 +140,7 @@ $coll->drop();
 while($result = $stm->fetch(PDO::FETCH_ASSOC)){
     $jt = new JobTitle();
     $jt->job_title_text = preg_replace('/\n|\r/', '', $result["job_title"]);
-
+    $jt = json_decode(json_encode($jt), true);
     $coll->insertOne($jt);
 }
 
